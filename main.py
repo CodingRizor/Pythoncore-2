@@ -1,7 +1,7 @@
 # import tracemalloc
 # tracemalloc.start()
 import re
-from collections import Counter, OrderedDict, defaultdict, ChainMap, namedtuple
+from collections import Counter, OrderedDict, defaultdict, ChainMap, namedtuple, deque
 """
 print("--------------")
 print("Python too supports file handling and allows users to handle files i.e.," 
@@ -111,7 +111,6 @@ match = re.match(regex1, s4)
 print(match.group())
 match = re.match(regex1, s5)
 print(match.group())  # This pattern stops after finding the first match
-"""
 
 # Collections Module
 # The collection Module in Python provides different types of containers.
@@ -202,4 +201,45 @@ print(cm)
 
 # Namedtuple
 print("----------NamedTuple------------")
+# It supports both access from key-value and iteration.
+# Ex - call by - S[1] or S.name
+data = namedtuple('Student', ['name', 'age', 'course'])
+S = data('Dhairya', '21', 'Python')
+print(S[1])
+print(S.name)
+print("By getattr() - ", getattr(S, 'course'))
+print(S._fields)
+print(S._replace(course="Core Python"))
+print(S)
 
+# Dequeue
+print("/*/*/*/*/*/*/*/*Dequeue/*/*/*/*/*/*/*/*/*")
+# Deque is preferred over a list where quicker append and pop operations from both the ends of the container are needed.
+dq = deque([1, 2, 3, 4])
+print(dq)
+dq.append(5)
+print("For appending at right - ", dq)
+dq.appendleft(0)
+print("For appending at left - ", dq)
+dq.pop()
+print("After deleting from right - ", dq)
+dq.popleft()
+print("After deleting from left - ", dq)
+dq.insert(2, 4)
+print("After insertion - ", dq)
+print("Count - ", dq.count(4))
+dq.remove(4)  # Remove first occurrence of given argument
+print("After removal - ", dq)
+# extend - add multiple values at the right end of dequeue
+# extendleft - add multiple values at the left end of dequeue
+dq.extend([5, 6, 7])
+print("Adding multiple values to the right - ", dq)
+dq.extendleft([0, -1, -2])
+print("Adding multiple values to the left - ", dq)
+dq.reverse()
+print("Reverse - ", dq)
+dq.rotate(3)
+print("Rotate - ", dq)
+print("End")
+print("--------------------")
+"""
